@@ -1,3 +1,10 @@
-<p>
-  admin works!
-</p>
+<p-menubar [model]="items">
+  <span class="logo">TRAILSTATS</span>  
+</p-menubar>
+
+<div class="ui-g">
+  <div class="ui-g-12">
+    <button pButton label="Get geostats" (click)="getGeoStats()"></button>
+  </div>
+
+</div>

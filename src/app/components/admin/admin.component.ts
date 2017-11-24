@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/primeng';
+
+import { ServerRequests } from "../../services";
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  private items: MenuItem[];
+
+  constructor(private server: ServerRequests) {}
 
   ngOnInit() {
+    this.items = [
+      {
+        label: 'Site',
+        routerLink: '/main'
+      }
+    ];
+  }
+
+  getGeoStats() {
+    this.server.getGeoData().subscribe(
+      res => {
+        console.log(res);
+      }
+    )
   }
 
 }

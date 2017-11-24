@@ -18,4 +18,9 @@ export class ServerRequests {
     return this.http.post(this.server + "login=true", JSON.stringify(credentials)).map(res => res.json().data)
   }
 
+  public getGeoData(): Observable<any> {
+    return this.http.get(this.server + "getGeoData=true").map(res => res.json())
+    // return this.http.get("https://restcountries.eu/rest/v2/all?fields=name;population;area").map(res => res.json())
+  }
+
 }
