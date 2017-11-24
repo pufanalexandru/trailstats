@@ -1,0 +1,5 @@
+<input type="text" placeholder="username" #username>
+<input type="password" placeholder="password" #password>
+<button (click)="login(username.value, password.value)">Login</button>
+
+<p *ngIf="badLogin">User sau parola gresita</p>
