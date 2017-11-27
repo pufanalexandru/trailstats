@@ -53,7 +53,7 @@ export class AdminComponent implements OnInit {
 
   initEdit(data: any) {
     this.tempValue = data.alpha_3;
-    data.alpha_3.value = '';
+    data.alpha_3 = '';
   }
 
 }
