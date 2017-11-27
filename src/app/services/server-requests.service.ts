@@ -10,17 +10,18 @@ export class ServerRequests {
 
   constructor(private http: Http) {}
 
-  public checkToken(token: string): Observable<any> {
-    return this.http.get(this.server + "checkToken=true&token=" + token).map(res => res.json().data)
-  }
-
   public login(credentials: any): Observable<any> {
     return this.http.post(this.server + "login=true", JSON.stringify(credentials)).map(res => res.json().data)
   }
 
-  public getGeoData(): Observable<any> {
-    return this.http.get(this.server + "getGeoData=true").map(res => res.json())
-    // return this.http.get("https://restcountries.eu/rest/v2/all?fields=name;population;area").map(res => res.json())
+  public get(operation: string): Observable<any> {
+    return this.http.get(this.server + operation + "=true&token=" + localStorage['token']).map(res => res.json().data);
+  }
+
+  public getWithParams(operation: string, params: any[]): Observable<any> {
+    let paramsString: string = '';
+    params.forEach(param => paramsString += param.name + "=" + param.value + "&");
+    return this.http.get(this.server + operation + "=true&" + paramsString + "token=" + localStorage['token']).map(res => res.json().data);
   }
 
 }

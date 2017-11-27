@@ -14,7 +14,7 @@ export class AdminGuardService implements CanActivate {
         this.router.navigate(['/login']);
         resolve(false);
       }
-      this.server.checkToken(localStorage['token']).subscribe(res => { 
+      this.server.get('checkToken').subscribe(res => { 
         res == false && this.router.navigate(['/login']);
         resolve(res) 
       });

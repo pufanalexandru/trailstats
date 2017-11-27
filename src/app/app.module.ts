@@ -7,6 +7,9 @@ import { NgModule } from '@angular/core';
 // PrimeNG
 import { ButtonModule } from 'primeng/components/button/button';
 import { MenubarModule } from 'primeng/components/menubar/menubar';
+import { DataTableModule } from 'primeng/components/datatable/datatable';
+import { MessageModule } from "primeng/components/message/message";
+import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +22,7 @@ import { ServerRequests, AdminGuardService } from "./services";
     AppComponent, AdminComponent, MainComponent, LoginComponent
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, HttpModule, FormsModule, AppRoutingModule, ButtonModule, MenubarModule
+    BrowserModule, BrowserAnimationsModule, HttpModule, FormsModule, AppRoutingModule, ButtonModule, MenubarModule, DataTableModule, MessageModule, CheckboxModule
   ],
   providers: [ ServerRequests, AdminGuardService ],
   bootstrap: [AppComponent]

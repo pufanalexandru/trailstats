@@ -5,6 +5,37 @@
 <div class="ui-g">
   <div class="ui-g-12">
     <button pButton label="Get geostats" (click)="getGeoStats()"></button>
+    <button pButton label="Get trails" (click)="getGeoStats()"></button>
+  </div>
+
+  <div class="ui-g-12" *ngIf="noCodeCountries">
+    <p-message severity="warn" text="You have {{noCodeCountries}} countries without a code"></p-message>
+  </div>
+
+  <div class="ui-g-7" *ngIf="newCountries">
+    <p-dataTable 
+      [value]="newCountries" 
+      [editable]="true" 
+      (onEditInit) = "initEdit($event.data)"
+      (onEdit)="$event.data.alpha_3 = $event.data.alpha_3.toUpperCase()" 
+      (onEditComplete)="addCode($event.data)" 
+    #dt>
+      <p-column field="title" header="Name"></p-column>
+      <p-column field="surface" header="Surface"></p-column>
+      <p-column field="population" header="Population"></p-column>
+      <p-column 
+        field="alpha_3" 
+        header="Code" 
+        [editable]="true"
+        [filter]="true" 
+        filterMatchMode="equals" 
+        filterType="checkbox">
+          <ng-template pTemplate="filter" let-col>
+              <br>Missing codes
+              <p-checkbox (onChange)="dt.filter($event == true ? '-' : '', col.field, col.filterMatchMode)"></p-checkbox>
+           </ng-template>
+      </p-column>
+    </p-dataTable>
   </div>
 
 </div>
