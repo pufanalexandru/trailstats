@@ -16,25 +16,14 @@
     <p-dataTable 
       [value]="newCountries" 
       [editable]="true" 
-      (onEditInit) = "initEdit($event.data)"
-      (onEdit)="$event.data.alpha_3 = $event.data.alpha_3.toUpperCase()" 
+      (onEditInit)="tempValue = $event.data.alpha_3"
+      (onEdit)="$event.data.alpha_3 = $event.data.alpha_3.toUpperCase()"
       (onEditComplete)="addCode($event.data)" 
     #dt>
       <p-column field="title" header="Name" [sortable]="true"></p-column>
       <p-column field="surface" header="Surface" [sortable]="true"></p-column>
       <p-column field="population" header="Population" [sortable]="true"></p-column>
-      <p-column 
-        field="alpha_3" 
-        header="Code" 
-        [editable]="true"
-        [filter]="true" 
-        filterMatchMode="equals" 
-        filterType="checkbox">
-          <ng-template pTemplate="filter" let-col>
-              <br>Missing codes
-              <p-checkbox (onChange)="dt.filter($event == true ? '-' : '', col.field, col.filterMatchMode)"></p-checkbox>
-           </ng-template>
-      </p-column>
+      <p-column  field="alpha_3"  header="Code"  [editable]="true" [sortable]="true"></p-column>
     </p-dataTable>
   </div>
 

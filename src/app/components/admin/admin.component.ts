@@ -31,7 +31,7 @@ export class AdminComponent implements OnInit {
 
   countNoCodeCountries(countries: any[]) {
     countries.forEach(country => {
-      country.alpha_3 == "-" && this.noCodeCountries++;
+      country.alpha_3 || this.noCodeCountries++;
     });
   }
 
@@ -50,10 +50,5 @@ export class AdminComponent implements OnInit {
   getGeoStats() {
     this.server.get('getGeoData').subscribe(res => alert("Got geodata"));
   }
-
-  initEdit(data: any) {
-    this.tempValue = data.alpha_3;
-    data.alpha_3 = '';
-  }
-
+  
 }
