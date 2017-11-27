@@ -20,9 +20,9 @@
       (onEdit)="$event.data.alpha_3 = $event.data.alpha_3.toUpperCase()" 
       (onEditComplete)="addCode($event.data)" 
     #dt>
-      <p-column field="title" header="Name"></p-column>
-      <p-column field="surface" header="Surface"></p-column>
-      <p-column field="population" header="Population"></p-column>
+      <p-column field="title" header="Name" [sortable]="true"></p-column>
+      <p-column field="surface" header="Surface" [sortable]="true"></p-column>
+      <p-column field="population" header="Population" [sortable]="true"></p-column>
       <p-column 
         field="alpha_3" 
         header="Code" 
