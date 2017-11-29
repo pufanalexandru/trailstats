@@ -48,7 +48,7 @@ export class AdminComponent implements OnInit {
   }
 
   getGeoStats() {
-    this.server.get('getGeoData').subscribe(res => this.countries = this.parseCountries(res));
+    this.server.get('getGeoData').subscribe(res => this.countries = this.utils.parseFields(res, ['id', 'surface', 'population']);
   }
 
   getTrails() {
