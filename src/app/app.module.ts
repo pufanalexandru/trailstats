@@ -14,12 +14,12 @@ import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { MainComponent, LoginComponent, AdminComponent } from "./components";
+import { MainComponent, ListsComponent, GraphsComponent LoginComponent, AdminComponent } from "./components";
 import { ServerRequests, AdminGuardService } from "./services";
 
 @NgModule({
   declarations: [
-    AppComponent, AdminComponent, MainComponent, LoginComponent
+    AppComponent, AdminComponent, MainComponent, LoginComponent, ListsComponent, GraphsComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, HttpModule, FormsModule, AppRoutingModule, ButtonModule, MenubarModule, DataTableModule, MessageModule, CheckboxModule
