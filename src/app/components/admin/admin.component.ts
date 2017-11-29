@@ -11,7 +11,7 @@ import { ServerRequests } from "../../services";
 export class AdminComponent implements OnInit {
 
   private items: MenuItem[];
-  private newCountries: any;
+  private countries: any;
   private noCodeCountries: number = 0;
   private tempValue: string = '';
 
@@ -22,8 +22,8 @@ export class AdminComponent implements OnInit {
 
     this.server.get("getCountries").subscribe(
       res => {
-        this.newCountries = res;
-        this.countNoCodeCountries(this.newCountries);
+        this.countries = res;
+        this.countNoCodeCountries(this.countries);
       }
     );
 
@@ -48,7 +48,7 @@ export class AdminComponent implements OnInit {
   }
 
   getGeoStats() {
-    this.server.get('getGeoData').subscribe(res => alert("Got geodata"));
+    this.server.get('getGeoData').subscribe(res => this.countries = res);
   }
   
 }

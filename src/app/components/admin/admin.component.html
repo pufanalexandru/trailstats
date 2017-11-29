@@ -12,9 +12,9 @@
     <p-message severity="warn" text="You have {{noCodeCountries}} countries without a code"></p-message>
   </div>
 
-  <div class="ui-g-7" *ngIf="newCountries">
+  <div class="ui-g-7" *ngIf="countries">
     <p-dataTable 
-      [value]="newCountries" 
+      [value]="countries" 
       [editable]="true" 
       (onEditInit)="tempValue = $event.data.alpha_3"
       (onEdit)="$event.data.alpha_3 = $event.data.alpha_3.toUpperCase()"
