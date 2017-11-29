@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
 
     this.server.get("getCountries").subscribe(
       res => {
-        this.countries = res;
+        this.countries = this.parseCountries(res);
         this.countNoCodeCountries(this.countries);
       }
     );
@@ -33,6 +33,15 @@ export class AdminComponent implements OnInit {
     countries.forEach(country => {
       country.alpha_3 || this.noCodeCountries++;
     });
+  }
+
+  parseCountries(countries: any[]): any[] {
+    countries.forEach(country => {
+      country.surface = parseInt(country.surface);
+      country.population = parseInt(country.population);
+    });
+
+    return countries;
   }
 
   addCode(event: any) {
@@ -48,7 +57,7 @@ export class AdminComponent implements OnInit {
   }
 
   getGeoStats() {
-    this.server.get('getGeoData').subscribe(res => this.countries = res);
+    this.server.get('getGeoData').subscribe(res => this.countries = this.parseCountries(res););
   }
   
 }
