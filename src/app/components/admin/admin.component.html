@@ -21,8 +21,16 @@
       (onEditComplete)="addCode($event.data)" 
     #dt>
       <p-column field="title" header="Name" [sortable]="true"></p-column>
-      <p-column field="surface" header="Surface" [sortable]="true"></p-column>
-      <p-column field="population" header="Population" [sortable]="true"></p-column>
+      <p-column field="surface" header="Surface" [sortable]="true">
+        <ng-template let-col let-country="rowData" pTemplate="body">
+          <span>{{country[col.field] | number}}</span>
+        </ng-template>
+      </p-column>
+      <p-column field="population" header="Population" [sortable]="true">
+        <ng-template let-col let-country="rowData" pTemplate="body">
+          <span>{{country[col.field] | number}}</span>
+        </ng-template>
+      </p-column>
       <p-column  field="alpha_3"  header="Code"  [editable]="true" [sortable]="true"></p-column>
     </p-dataTable>
   </div>
