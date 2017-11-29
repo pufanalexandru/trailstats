@@ -3,10 +3,14 @@ body {
   margin: 0;
 }
 
+.green {
+  color: green;
+}
 
-/* MENUBAR */
-.ui-datatable.borderless thead th,
-.ui-datatable.borderless tbody,
+.red {
+  color: red;
+}
+
 .ui-datatable.borderless tbody tr,
 .ui-datatable.borderless tbody td {
     border: none!important;

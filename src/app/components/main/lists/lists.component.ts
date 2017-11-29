@@ -21,4 +21,10 @@ export class ListsComponent implements OnInit {
     });
   }
 
+  getPosClass(country: any): string {
+    if (!country.yesterday.length) {
+      return 'fa fa-minus';
+    }
+  }
+
 }
