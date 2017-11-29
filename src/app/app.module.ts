@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MainComponent, ListsComponent, GraphsComponent, LoginComponent, AdminComponent } from "./components";
-import { ServerRequests, AdminGuardService } from "./services";
+import { ServerRequests, AdminGuardService, UtilitiesService } from "./services";
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { ServerRequests, AdminGuardService } from "./services";
   imports: [
     BrowserModule, BrowserAnimationsModule, HttpModule, FormsModule, AppRoutingModule, ButtonModule, MenubarModule, DataTableModule, MessageModule, CheckboxModule, PanelModule
   ],
-  providers: [ ServerRequests, AdminGuardService ],
+  providers: [ ServerRequests, AdminGuardService, UtilitiesService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

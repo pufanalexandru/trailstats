@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/primeng';
 
-import { ServerRequests } from "../../services";
+import { ServerRequests, UtilitiesService } from "../../services";
 
 @Component({
   selector: 'app-admin',
@@ -15,14 +15,14 @@ export class AdminComponent implements OnInit {
   private noCodeCountries: number = 0;
   private tempValue: string = '';
 
-  constructor(private server: ServerRequests) {}
+  constructor(private server: ServerRequests, private utils: UtilitiesService) {}
 
   ngOnInit() {
     this.items = [{ label: 'Site', routerLink: '/main' }];
 
     this.server.get("getCountries").subscribe(
       res => {
-        this.countries = this.parseCountries(res);
+        this.countries = this.utils.parseFields(res, ['id', 'surface', 'population']);
         this.countNoCodeCountries(this.countries);
       }
     );
@@ -33,15 +33,6 @@ export class AdminComponent implements OnInit {
     countries.forEach(country => {
       country.alpha_3 || this.noCodeCountries++;
     });
-  }
-
-  parseCountries(countries: any[]): any[] {
-    countries.forEach(country => {
-      country.surface = parseInt(country.surface);
-      country.population = parseInt(country.population);
-    });
-
-    return countries;
   }
 
   addCode(event: any) {

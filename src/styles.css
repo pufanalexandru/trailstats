@@ -5,3 +5,9 @@ body {
 
 
 /* MENUBAR */
+.ui-datatable.borderless thead th,
+.ui-datatable.borderless tbody,
+.ui-datatable.borderless tbody tr,
+.ui-datatable.borderless tbody td {
+    border: none!important;
+}
