@@ -21,9 +21,13 @@ export class ListsComponent implements OnInit {
     });
   }
 
-  getPosClass(country: any): string {
-    if (!country.yesterday.length) {
+  getPosClass(country: any, type: string): string {
+    if (parseInt(country.yesterday[type + '_pos']) == country[type + '_pos']) {
       return 'fa fa-minus';
+    } else if (parseInt(country.yesterday[type + '_pos']) > country[type + '_pos']) {
+      return 'fa fa-caret-up green';
+    } else {
+      return 'fa fa-caret-down red';
     }
   }
 
