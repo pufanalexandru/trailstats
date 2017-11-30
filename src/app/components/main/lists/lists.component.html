@@ -1,14 +1,14 @@
 <div class="ui-g">
-  <div class="ui-g-6">
+  <div class="ui-g-4">
     <p-dataTable [value]="countries" sortField="surface_pos" sortOrder="1" styleClass="borderless">
       <p-column field="surface_pos" header="Pos" [style]="{'width':'10%', 'text-align': 'center'}"></p-column>
-      <p-column header="Change" [style]="{'width':'10%', 'text-align': 'center'}">
+      <p-column header="Change" [style]="{'width':'15%', 'text-align': 'center'}">
         <ng-template let-col let-country="rowData" pTemplate="body">
-          <i [class]="getPosClass(country, 'surface')"></i>
+          <i [class]="getPosClass(country, 'surface')" [pTooltip]="getTooltipText(country)"></i>
         </ng-template>
       </p-column>
       <p-column field="title" header="Name"></p-column>
-      <p-column header="Km/trails" [style]="{'width':'20%'}">
+      <p-column header="Km/trails" [style]="{'width':'22%'}">
         <ng-template let-col let-country="rowData" pTemplate="body">
           <span>{{country["surface"] /country["total_trails"] | number: '1.0-0'}}</span>
         </ng-template>
@@ -16,11 +16,11 @@
     </p-dataTable>
   </div>
 
-  <div class="ui-g-6">
+  <div class="ui-g-4">
     <p-dataTable [value]="countries" sortField="population_pos" sortOrder="1" styleClass="borderless">
       <p-column field="population_pos" header="Pos" [style]="{'width':'10%', 'text-align': 'center'}"></p-column>
       <p-column field="title" header="Name"></p-column>
-      <p-column header="People/trails" [style]="{'width':'20%'}">
+      <p-column header="People/trails" [style]="{'width':'22%'}">
         <ng-template let-col let-country="rowData" pTemplate="body">
           <span>{{country["population"] /country["total_trails"] | number: '1.0-0'}}</span>
         </ng-template>

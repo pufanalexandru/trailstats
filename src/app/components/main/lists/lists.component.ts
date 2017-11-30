@@ -31,4 +31,21 @@ export class ListsComponent implements OnInit {
     }
   }
 
+  getTooltipText(country: any) {
+    let yesterdayTrails = parseInt(country.yesterday.total_trails);
+    let todayTrails = country.total_trails;
+    let difference = todayTrails - yesterdayTrails;
+
+    if (difference == 0) {
+      return 'no new trails';
+    } else if (difference == 1) {
+      return '1 new trail';
+    } else if (difference > 1) {
+      return difference + ' new trails';
+    } else if (difference < 0) {
+      return Math.abs(difference) + ' deleted trails';
+    }
+
+  }
+
 }

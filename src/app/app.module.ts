@@ -11,6 +11,7 @@ import { DataTableModule } from 'primeng/components/datatable/datatable';
 import { MessageModule } from "primeng/components/message/message";
 import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
 import { PanelModule } from 'primeng/components/panel/panel';
+import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +24,7 @@ import { ServerRequests, AdminGuardService, UtilitiesService } from "./services"
     AppComponent, AdminComponent, MainComponent, LoginComponent, ListsComponent, GraphsComponent
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, HttpModule, FormsModule, AppRoutingModule, ButtonModule, MenubarModule, DataTableModule, MessageModule, CheckboxModule, PanelModule
+    BrowserModule, BrowserAnimationsModule, HttpModule, FormsModule, AppRoutingModule, ButtonModule, MenubarModule, DataTableModule, MessageModule, CheckboxModule, PanelModule, TooltipModule
   ],
   providers: [ ServerRequests, AdminGuardService, UtilitiesService ],
   bootstrap: [AppComponent]
