@@ -46,6 +46,6 @@
     "tslint": "~5.7.0",
     "typescript": "~2.4.2",
     "font-awesome": "^4.7.0",
-    "primeng": "^5.0.0"
+    "primeng": "^5.0.2"
   }
 }
