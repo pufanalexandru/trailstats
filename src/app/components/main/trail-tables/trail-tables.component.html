@@ -1,0 +1,21 @@
+<div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+  <p-checkbox name="groupname" [(ngModel)]="showLessCountries" binary="true" (click)="toggleCountriesMode(showLessCountries)">
+  </p-checkbox>Exclude countries with less than 50 trails
+</div>
+<p-dataTable [value]="filteredCountries" [sortField]="sortField" [sortOrder]="sortOrder" styleClass="borderless">
+  <p-column header="Pos" [style]="{'width':'12%', 'text-align': 'center'}">
+    <ng-template let-i="rowIndex" pTemplate="body">{{i + 1}}</ng-template>
+  </p-column>
+  <p-column header="Change" [style]="{'width':'18%', 'text-align': 'center'}">
+    <ng-template let-col let-country="rowData" pTemplate="body">
+      <i [class]="getPosClass(country, type)" [pTooltip]="getTooltipText(country)"></i>
+    </ng-template>
+  </p-column>
+  <p-column field="title" header="Name"></p-column>
+  <p-column *ngIf="sortField == 'total-trails'" field="total_trails" header="Trails"></p-column>
+  <p-column [header]="Km/trails" [style]="{'width':'22%'}">
+    <ng-template let-col let-country="rowData" pTemplate="body">
+      <span>{{country["surface"] / country["total_trails"] | number: '1.0-0'}}</span>
+    </ng-template>
+  </p-column>
+</p-dataTable>

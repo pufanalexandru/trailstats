@@ -17,12 +17,12 @@ import { TabMenuModule } from 'primeng/components/tabmenu/tabmenu';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { MainComponent, ListsComponent, GraphsComponent, LoginComponent, AdminComponent } from "./components";
+import { MainComponent, ListsComponent, GraphsComponent, LoginComponent, AdminComponent, TrailTablesComponent } from "./components";
 import { ServerRequests, AdminGuardService, UtilitiesService } from "./services";
 
 @NgModule({
   declarations: [
-    AppComponent, AdminComponent, MainComponent, LoginComponent, ListsComponent, GraphsComponent
+    AppComponent, AdminComponent, MainComponent, LoginComponent, ListsComponent, GraphsComponent, TrailTablesComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, HttpModule, FormsModule, AppRoutingModule, ButtonModule, MenubarModule, DataTableModule, MessageModule, CheckboxModule, PanelModule, TooltipModule, TabMenuModule

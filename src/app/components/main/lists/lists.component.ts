@@ -11,7 +11,7 @@ import { ViewEncapsulation } from '@angular/core/src/metadata/view';
 })
 export class ListsComponent implements OnInit {
 
-  private countries: any[];
+  private countries: any[] = [];
   private filteredCountries: any[];
   private showLessCountries: boolean = true;
 
