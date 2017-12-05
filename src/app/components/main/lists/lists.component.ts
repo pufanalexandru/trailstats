@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/primeng';
 
 import { ServerRequests, UtilitiesService } from "../../../services";
 import { ViewEncapsulation } from '@angular/core/src/metadata/view';
@@ -11,12 +12,18 @@ import { ViewEncapsulation } from '@angular/core/src/metadata/view';
 export class ListsComponent implements OnInit {
 
   private countries: any[];
+  private items = [
+    { label: 'Total', command: () => this.currentList = 'total' },
+    { label: 'Area', command: () => this.currentList = 'area' },
+    { label: 'Population', command: () => this.currentList = 'population' }
+  ];
+  private currentList: string = 'total';
 
   constructor(private server: ServerRequests, private utils: UtilitiesService) {}
 
   ngOnInit() {
     this.server.get("getData").subscribe(res => {
-      this.countries = this.utils.parseFields(res, ['id', 'surface_pos', 'population_pos', 'total_trails', 'surface', 'population']);
+      this.countries = this.utils.parseFields(res, ['id', 'total_pos', 'surface_pos', 'population_pos', 'total_trails', 'surface', 'population']);
       console.log(this.countries);
     });
   }

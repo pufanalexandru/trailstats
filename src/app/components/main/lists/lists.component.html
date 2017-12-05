@@ -1,5 +1,25 @@
-<div class="ui-g">
-  <div class="ui-g-4">
+<div class="ui-g-12">
+  <p-tabMenu [model]="items"></p-tabMenu>
+</div>
+<div class="ui-g-12">
+  <div class="ui-g-6" *ngIf="currentList=='total'">
+    <p-dataTable [value]="countries" sortField="total_trails" sortOrder="-1" styleClass="borderless">
+      <p-column header="Pos" [style]="{'width':'10%', 'text-align': 'center'}">
+        <ng-template let-i="rowIndex" pTemplate="body">
+          {{i + 1}}
+        </ng-template>
+      </p-column>
+      <p-column header="Change" [style]="{'width':'15%', 'text-align': 'center'}">
+        <ng-template let-col let-country="rowData" pTemplate="body">
+          <i [class]="getPosClass(country, 'total')" [pTooltip]="getTooltipText(country)"></i>
+        </ng-template>
+      </p-column>
+      <p-column field="title" header="Name"></p-column>
+      <p-column field="total_trails" header="Trails"></p-column>
+    </p-dataTable>
+  </div>
+
+  <div class="ui-g-6" *ngIf="currentList=='area'">
     <p-dataTable [value]="countries" sortField="surface_pos" sortOrder="1" styleClass="borderless">
       <p-column field="surface_pos" header="Pos" [style]="{'width':'10%', 'text-align': 'center'}"></p-column>
       <p-column header="Change" [style]="{'width':'15%', 'text-align': 'center'}">
@@ -16,9 +36,14 @@
     </p-dataTable>
   </div>
 
-  <div class="ui-g-4">
+  <div class="ui-g-6" *ngIf="currentList=='population'">
     <p-dataTable [value]="countries" sortField="population_pos" sortOrder="1" styleClass="borderless">
       <p-column field="population_pos" header="Pos" [style]="{'width':'10%', 'text-align': 'center'}"></p-column>
+      <p-column header="Change" [style]="{'width':'15%', 'text-align': 'center'}">
+        <ng-template let-col let-country="rowData" pTemplate="body">
+          <i [class]="getPosClass(country, 'population')" [pTooltip]="getTooltipText(country)"></i>
+        </ng-template>
+      </p-column>
       <p-column field="title" header="Name"></p-column>
       <p-column header="People/trails" [style]="{'width':'22%'}">
         <ng-template let-col let-country="rowData" pTemplate="body">
