@@ -3,7 +3,10 @@
 </div>
 <div class="ui-g-12">
   <div class="ui-g-6 ui-sm-12" *ngIf="currentList=='total'">
-    <p-dataTable [value]="countries" sortField="total_trails" sortOrder="-1" styleClass="borderless">
+    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+      <p-checkbox name="groupname" [(ngModel)]="showLessCountries" binary="true" (click)="toggleCountriesMode(showLessCountries)"></p-checkbox>Exclude countries with less than 50 trails
+    </div>
+    <p-dataTable [value]="filteredCountries" sortField="total_trails" sortOrder="-1" styleClass="borderless">
       <p-column header="Pos" [style]="{'width':'12%', 'text-align': 'center'}">
         <ng-template let-i="rowIndex" pTemplate="body">{{i + 1}}</ng-template>
       </p-column>
@@ -18,7 +21,10 @@
   </div>
 
   <div class="ui-g-6 ui-sm-12" *ngIf="currentList=='area'">
-    <p-dataTable [value]="countries" sortField="surface_pos" sortOrder="1" styleClass="borderless">
+    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+      <p-checkbox name="groupname" [(ngModel)]="showLessCountries" binary="true" (click)="toggleCountriesMode(showLessCountries)"></p-checkbox>Exclude countries with less than 50 trails
+    </div>
+    <p-dataTable [value]="filteredCountries" sortField="surface_pos" sortOrder="1" styleClass="borderless">
       <p-column header="Pos" [style]="{'width':'12%', 'text-align': 'center'}">
         <ng-template let-i="rowIndex" pTemplate="body">{{i + 1}}</ng-template>
       </p-column>
@@ -37,7 +43,10 @@
   </div>
 
   <div class="ui-g-6 ui-sm-12" *ngIf="currentList=='population'">
-    <p-dataTable [value]="countries" sortField="population_pos" sortOrder="1" styleClass="borderless">
+    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+      <p-checkbox name="groupname" [(ngModel)]="showLessCountries" binary="true" (click)="toggleCountriesMode(showLessCountries)"></p-checkbox>Exclude countries with less than 50 trails
+    </div>
+    <p-dataTable [value]="filteredCountries" sortField="population_pos" sortOrder="1" styleClass="borderless">
       <p-column header="Pos" [style]="{'width':'12%', 'text-align': 'center'}">
         <ng-template let-i="rowIndex" pTemplate="body">{{i + 1}}</ng-template>
       </p-column>

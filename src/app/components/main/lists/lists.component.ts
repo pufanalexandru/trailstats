@@ -12,6 +12,9 @@ import { ViewEncapsulation } from '@angular/core/src/metadata/view';
 export class ListsComponent implements OnInit {
 
   private countries: any[];
+  private filteredCountries: any[];
+  private showLessCountries: boolean = true;
+
   private items = [
     { label: 'Total', command: () => this.currentList = 'total' },
     { label: 'Area', command: () => this.currentList = 'area' },
@@ -24,6 +27,7 @@ export class ListsComponent implements OnInit {
   ngOnInit() {
     this.server.get("getData").subscribe(res => {
       this.countries = this.utils.parseFields(res, ['id', 'total_pos', 'surface_pos', 'population_pos', 'total_trails', 'surface', 'population']);
+      this.filteredCountries = this.countries.filter(country => country.total_trails >= 50);
       console.log(this.countries);
     });
   }
@@ -53,6 +57,10 @@ export class ListsComponent implements OnInit {
       return Math.abs(difference) + ' deleted trails';
     }
 
+  }
+
+  toggleCountriesMode(showLess: boolean) {
+    this.filteredCountries = showLess ? this.countries.filter(country => country.total_trails >= 50) : this.countries;
   }
 
 }
