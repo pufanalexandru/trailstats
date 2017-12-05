@@ -2,14 +2,12 @@
   <p-tabMenu [model]="items"></p-tabMenu>
 </div>
 <div class="ui-g-12">
-  <div class="ui-g-6" *ngIf="currentList=='total'">
+  <div class="ui-g-6 ui-sm-12" *ngIf="currentList=='total'">
     <p-dataTable [value]="countries" sortField="total_trails" sortOrder="-1" styleClass="borderless">
-      <p-column header="Pos" [style]="{'width':'10%', 'text-align': 'center'}">
-        <ng-template let-i="rowIndex" pTemplate="body">
-          {{i + 1}}
-        </ng-template>
+      <p-column header="Pos" [style]="{'width':'12%', 'text-align': 'center'}">
+        <ng-template let-i="rowIndex" pTemplate="body">{{i + 1}}</ng-template>
       </p-column>
-      <p-column header="Change" [style]="{'width':'15%', 'text-align': 'center'}">
+      <p-column header="Change" [style]="{'width':'18%', 'text-align': 'center'}">
         <ng-template let-col let-country="rowData" pTemplate="body">
           <i [class]="getPosClass(country, 'total')" [pTooltip]="getTooltipText(country)"></i>
         </ng-template>
@@ -19,10 +17,12 @@
     </p-dataTable>
   </div>
 
-  <div class="ui-g-6" *ngIf="currentList=='area'">
+  <div class="ui-g-6 ui-sm-12" *ngIf="currentList=='area'">
     <p-dataTable [value]="countries" sortField="surface_pos" sortOrder="1" styleClass="borderless">
-      <p-column field="surface_pos" header="Pos" [style]="{'width':'10%', 'text-align': 'center'}"></p-column>
-      <p-column header="Change" [style]="{'width':'15%', 'text-align': 'center'}">
+      <p-column header="Pos" [style]="{'width':'12%', 'text-align': 'center'}">
+        <ng-template let-i="rowIndex" pTemplate="body">{{i + 1}}</ng-template>
+      </p-column>
+      <p-column header="Change" [style]="{'width':'18%', 'text-align': 'center'}">
         <ng-template let-col let-country="rowData" pTemplate="body">
           <i [class]="getPosClass(country, 'surface')" [pTooltip]="getTooltipText(country)"></i>
         </ng-template>
@@ -30,16 +30,18 @@
       <p-column field="title" header="Name"></p-column>
       <p-column header="Km/trails" [style]="{'width':'22%'}">
         <ng-template let-col let-country="rowData" pTemplate="body">
-          <span>{{country["surface"] /country["total_trails"] | number: '1.0-0'}}</span>
+          <span>{{country["surface"] / country["total_trails"] | number: '1.0-0'}}</span>
         </ng-template>
       </p-column>
     </p-dataTable>
   </div>
 
-  <div class="ui-g-6" *ngIf="currentList=='population'">
+  <div class="ui-g-6 ui-sm-12" *ngIf="currentList=='population'">
     <p-dataTable [value]="countries" sortField="population_pos" sortOrder="1" styleClass="borderless">
-      <p-column field="population_pos" header="Pos" [style]="{'width':'10%', 'text-align': 'center'}"></p-column>
-      <p-column header="Change" [style]="{'width':'15%', 'text-align': 'center'}">
+      <p-column header="Pos" [style]="{'width':'12%', 'text-align': 'center'}">
+        <ng-template let-i="rowIndex" pTemplate="body">{{i + 1}}</ng-template>
+      </p-column>
+      <p-column header="Change" [style]="{'width':'18%', 'text-align': 'center'}">
         <ng-template let-col let-country="rowData" pTemplate="body">
           <i [class]="getPosClass(country, 'population')" [pTooltip]="getTooltipText(country)"></i>
         </ng-template>
@@ -47,7 +49,7 @@
       <p-column field="title" header="Name"></p-column>
       <p-column header="People/trails" [style]="{'width':'22%'}">
         <ng-template let-col let-country="rowData" pTemplate="body">
-          <span>{{country["population"] /country["total_trails"] | number: '1.0-0'}}</span>
+          <span>{{country["population"] / country["total_trails"] | number: '1.0-0'}}</span>
         </ng-template>
       </p-column>
     </p-dataTable>

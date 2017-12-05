@@ -15,8 +15,3 @@ body {
 .ui-datatable.borderless tbody td {
     border: none!important;
 }
-
-.ui-tabmenu {
-  margin: 0 auto;
-  width: 400px;
-}
